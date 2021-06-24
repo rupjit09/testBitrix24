@@ -1,10 +1,11 @@
 package com.rupjit.qaSelenium.testcases;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.rupjit.qaSelenium.base.TestBase;
-//@Listeners({com.rupjit.qaSelenium.listeners.ExtentReportListener.class})
+@Listeners({com.rupjit.qaSelenium.listeners.AllureListener.class})
 public class TestCase1 extends TestBase{
 
 	@Test
