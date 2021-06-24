@@ -12,18 +12,5 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class test1 extends TestBase{
  
-	@BeforeMethod
-	public static void launchBrowser() {
-		WebDriverManager.chromedriver().setup();
-		driver=new ChromeDriver();
-	}
-	@Test
-	public static void testLogin() {
-		driver.navigate().to("https://www.google.com/");
-	}
 	
-	@AfterMethod
-	public static void closeBrowser() {
-		driver.quit();
-	}
 }
