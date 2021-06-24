@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+	<listener class-name="com.rupjit.qaSelenium.listeners.ExtentReportListener"/>
+	<listener class-name="com.rupjit.qaSelenium.listeners.AllureListener"/>
+	</listeners>
+  
+  
+  <test name="Test"  parallel="methods" thread-count="2">
+    <classes>
+      <class name="com.rupjit.qaSelenium.testcases.TestCase1"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
