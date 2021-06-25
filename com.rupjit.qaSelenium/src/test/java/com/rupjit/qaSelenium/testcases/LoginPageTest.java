@@ -28,7 +28,7 @@ public class LoginPageTest extends TestBase{
 	@Test
 	public void loginFailTest() throws Exception {
 		loginpage=new LoginPage(); 
-		loginpage.login("admin", "noasd");
+		loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
 		Assert.assertEquals("A", "B");
 	}
 }

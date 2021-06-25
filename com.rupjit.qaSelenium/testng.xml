@@ -3,7 +3,7 @@
 <suite name="Suite">
 
 	<listeners>
-	<!-- <listener class-name="com.rupjit.qaSelenium.listeners.ExtentReportListener"/> -->
+	<listener class-name="com.rupjit.qaSelenium.listeners.ExtentReportListener"/>
 	<listener class-name="com.rupjit.qaSelenium.listeners.AllureListener"/>
 	<listener class-name="com.rupjit.qaSelenium.listeners.AnnotationTransformer"/>
 	</listeners>

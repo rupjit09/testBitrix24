@@ -28,6 +28,9 @@ public class LoginPage extends TestBase{
 	
 	public HomePage login(String un,String pwd) throws Exception{
 		username.sendKeys(un);
+		boolean isDisplayed=NEXT_Button.isDisplayed();
+		boolean isEnabled=NEXT_Button.isEnabled();
+		System.out.println("isDisplayed="+isDisplayed+"----"+"isEnabled="+isEnabled);
 		NEXT_Button.click();
 		password.sendKeys(pwd);
 		NEXT_Button.click();
