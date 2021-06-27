@@ -1,6 +1,10 @@
 package com.rupjit.qaSelenium.listeners;
 
 import java.io.IOException;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -12,6 +16,8 @@ import com.rupjit.qaSelenium.base.DriverFactory;
 import com.rupjit.qaSelenium.base.ExtentFactory;
 import com.rupjit.qaSelenium.base.ExtentReportSetup;
 import com.rupjit.qaSelenium.base.TestBase;
+
+import io.qameta.allure.Attachment;
 
 public class ExtentReportListener extends TestBase implements ITestListener{
 
@@ -44,6 +50,15 @@ public void onTestSuccess(ITestResult result) {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+	//allure
+		WebDriver driver = DriverFactory.getInstance().getDriver();
+		// Allure ScreenShotRobot and SaveTestLog
+		if (driver instanceof WebDriver) {
+			saveScreenshotPNG(driver);
+		}
+		// Save a log on allure.
+		saveTextLog(getTestMethodName(result) + " Success and screenshot taken!");	
 }
 
 public void onTestFailure(ITestResult result) {
@@ -68,7 +83,14 @@ public void onTestFailure(ITestResult result) {
 		e.printStackTrace();
 	}
 	
-
+//allure
+	WebDriver driver = DriverFactory.getInstance().getDriver();
+	// Allure ScreenShotRobot and SaveTestLog
+	if (driver instanceof WebDriver) {
+		saveScreenshotPNG(driver);
+	}
+	// Save a log on allure.
+	saveTextLog(getTestMethodName(result) + " failed and screenshot taken!");	
 }
 
 public void onTestSkipped(ITestResult result) {
@@ -88,6 +110,9 @@ public void onStart(ITestContext context) {
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
+	
+	//allure
+	context.setAttribute("WebDriver", DriverFactory.getInstance().getDriver());
 }
 
 public void onFinish(ITestContext context) {
@@ -95,4 +120,26 @@ public void onFinish(ITestContext context) {
 	report.flush();
 }
 
+//below methods are for AllureReport
+private static String getTestMethodName(ITestResult iTestResult) {
+	return iTestResult.getMethod().getConstructorOrMethod().getName();
+}
+
+// Text attachments for Allure
+@Attachment(value = "Page screenshot", type = "image/png")
+public byte[] saveScreenshotPNG(WebDriver driver) {
+	return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+}
+
+// Text attachments for Allure
+@Attachment(value = "{0}", type = "text/plain")
+public static String saveTextLog(String message) {
+	return message;
+}
+
+// HTML attachments for Allure
+@Attachment(value = "{0}", type = "text/html")
+public static String attachHtml(String html) {
+	return html;
+}
 }
