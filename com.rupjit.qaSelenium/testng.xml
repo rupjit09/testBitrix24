@@ -4,7 +4,7 @@
 
 	<listeners>
 	<listener class-name="com.rupjit.qaSelenium.listeners.ExtentReportListener"/>
-	<listener class-name="com.rupjit.qaSelenium.listeners.AllureListener"/>
+	<!-- <listener class-name="com.rupjit.qaSelenium.listeners.AllureListener"/> -->
 	<listener class-name="com.rupjit.qaSelenium.listeners.AnnotationTransformer"/>
 	</listeners>
   
@@ -13,6 +13,7 @@
     <classes>
       <!-- <class name="com.rupjit.qaSelenium.testcases.TestCase1"/> -->
       <class name="com.rupjit.qaSelenium.testcases.LoginPageTest"/>
+      <class name="com.rupjit.qaSelenium.testcases.HomePageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
