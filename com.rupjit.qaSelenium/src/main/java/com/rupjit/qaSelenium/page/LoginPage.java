@@ -28,8 +28,10 @@ public class LoginPage extends TestBase{
 	
 	public HomePage login(String un,String pwd) throws Exception{
 		username.sendKeys(un);
+		waitForVisibilityOfElement(NEXT_Button);
 		NEXT_Button.click();
 		password.sendKeys(pwd);
+		waitForVisibilityOfElement(NEXT_Button);
 		NEXT_Button.click();
 		return new HomePage();
 	}
